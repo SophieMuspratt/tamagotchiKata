@@ -6,10 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TamagotchiTest {
-//	static int hunger = 100;
-//	static int fullness = 50;
-//	static int happiness = 50;
-//	static int tiredness = 25;
 	
 	Tamagotchi game;
 	
@@ -18,11 +14,8 @@ public class TamagotchiTest {
 		 game = new Tamagotchi();
 	}
 
-	
-	
 	@Test
 	public void feedTamagotchiToIncreaseFulnessAndDecreaseHunger() {
-//		game.setHunger(19);
 		game.feedTamagotchi();
 		
 		assertEquals(40, game.getHunger());
@@ -37,7 +30,6 @@ public class TamagotchiTest {
 		assertEquals(60, game.getTiredness());
 	}
 	
-	
 	@Test
 	public void putTamagotchiToBedToDecreaseTiredness() {
 		game.bedTamagotchi();
@@ -50,6 +42,58 @@ public class TamagotchiTest {
 		game.poopTamagotchi();
 		
 		assertEquals(40, game.getFullness());
+
+	}
+	
+	@Test
+	public void feedTamagotchiToTestBoundaries() {
+		game.feedTamagotchi();
+		game.feedTamagotchi();
+		game.feedTamagotchi();
+		game.feedTamagotchi();
+		game.feedTamagotchi();
+		game.feedTamagotchi();
+		
+		assertEquals(0, game.getHunger());
+		assertEquals(100, game.getFullness());
+	} 
+	
+	@Test
+	public void playTamagotchiToTestBoundaries() {
+		game.playWithTamagotchi();
+		game.playWithTamagotchi();
+		game.playWithTamagotchi();
+		game.playWithTamagotchi();
+		game.playWithTamagotchi();
+		game.playWithTamagotchi();
+		
+		assertEquals(100, game.getHappiness());
+		assertEquals(100, game.getTiredness());
+	}
+	
+	
+	@Test
+	public void sleepTamagotchiToTestBoundaries() {
+		game.bedTamagotchi();
+		game.bedTamagotchi();
+		game.bedTamagotchi();
+		game.bedTamagotchi();
+		game.bedTamagotchi();
+		game.bedTamagotchi();
+		
+		assertEquals(0, game.getTiredness());
+	}
+	
+	@Test
+	public void makeTamagotchiPoopToTestBoundaries() {
+		game.poopTamagotchi();
+		game.poopTamagotchi();
+		game.poopTamagotchi();
+		game.poopTamagotchi();
+		game.poopTamagotchi();
+		game.poopTamagotchi();
+		
+		assertEquals(0, game.getFullness());
 
 	}
 	
